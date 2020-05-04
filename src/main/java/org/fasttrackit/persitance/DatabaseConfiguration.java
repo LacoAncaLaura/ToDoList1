@@ -1,20 +1,32 @@
 package org.fasttrackit.persitance;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 
 public class DatabaseConfiguration {
-    public static Connection getConnection() throws SQLException {
-
-        DatabaseConfiguration.class.getClassLoader()
+    public static Connection getConnection() throws SQLException, IOException {
+        InputStream inputStream = DatabaseConfiguration.class.getClassLoader()
                 .getResourceAsStream("db.properties");
 
-        return DriverManager.getConnection(
-                "jdbc:mysql://127.0.0.1:3306/to_do_list",
-                "to-do-list",
-                "to-do-list");
+        if (inputStream == null) {
+            throw new RuntimeException("Failed the read db config files");
+        }
+        try {
+            Properties properties = new Properties();
+            properties.load(inputStream);
+
+            return DriverManager.getConnection(
+                    properties.getProperty("url"),
+                    properties.getProperty("username"),
+                    properties.getProperty("password"));
+        } finally {
+            inputStream.close();
+        }
 
     }
 }
