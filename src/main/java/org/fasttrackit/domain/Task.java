@@ -3,17 +3,17 @@ package org.fasttrackit.domain;
 import java.time.LocalDate;
 
 public class Task {
-    private long ID;
+    private long id;
     private String description;
     private LocalDate deadline;
     private boolean done;
 
     public long getID() {
-        return ID;
+        return id;
     }
 
-    public void setID(long ID) {
-        this.ID = ID;
+    public void setID(long id) {
+        this.id = id;
     }
 
     public String getDescription() {
@@ -43,7 +43,7 @@ public class Task {
     @Override
     public String toString() {
         return "Task{" +
-                "ID=" + ID +
+                "id=" + id +
                 ", description='" + description + '\'' +
                 ", deadline=" + deadline +
                 ", done=" + done +
