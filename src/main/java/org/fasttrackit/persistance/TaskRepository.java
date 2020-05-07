@@ -1,4 +1,4 @@
-package org.fasttrackit.persitance;
+package org.fasttrackit.persistance;
 
 import org.fasttrackit.transfer.CrateTaskRequest;
 import org.fasttrackit.transfer.CreateTaskRequest;
@@ -6,7 +6,6 @@ import org.fasttrackit.transfer.CreateTaskRequest;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
-import java.time.LocalDate;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
