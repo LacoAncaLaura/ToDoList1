@@ -1,6 +1,6 @@
 package org.fasttrackit.persistance;
 
-import org.fasttrackit.transfer.CrateTaskRequest;
+import org.fasttrackit.transfer.CreateTaskRequest;
 import org.fasttrackit.transfer.CreateTaskRequest;
 
 import java.io.IOException;
