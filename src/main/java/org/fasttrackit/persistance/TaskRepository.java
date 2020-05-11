@@ -49,7 +49,9 @@ public class TaskRepository {
 
     public List<Task> getTasks() throws SQLException, IOException, ClassNotFoundException {
         String sql = "SELECT id,description,deadline,done FROM tasks";
+
         List<Task> tasks = new ArrayList<>();
+
         try (Connection connection = DatabaseConfiguration.getConnection();
             Statement statement = connection.createStatement()){
 
@@ -68,6 +70,9 @@ public class TaskRepository {
             return tasks;
         }
     }
-}
+
+
+    }
+
 
 
