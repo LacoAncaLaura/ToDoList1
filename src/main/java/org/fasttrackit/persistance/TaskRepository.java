@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class TaskRepository {
 
-    public void createTask(CreateTaskRequest request ) throws IOException, SQLException {
+    public void createTask(CreateTaskRequest request ) throws IOException, SQLException, ClassNotFoundException {
         // preventing SQL Injection bt using PrepareStatement
         String sql = "INSERT INTO task (description , deadline) VALUES (?,?)";
 //try with resources
