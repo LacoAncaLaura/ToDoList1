@@ -17,16 +17,20 @@ public class TaskService {
         System.out.println("Creating task: " + request);
         taskRepository.createTask(request);
     }
-    public void updateTask(long id ,UpdateTaskRequest request) throws SQLException, IOException, ClassNotFoundException {
-        System.out.println("Updating task: " + id  + ":" + request);
+
+    public void updateTask(long id, UpdateTaskRequest request) throws SQLException, IOException, ClassNotFoundException {
+        System.out.println("Updating task: " + id + ":" + request);
         taskRepository.updateTask(id, request);
     }
+
     public void deleteTask(long id) throws SQLException, IOException, ClassNotFoundException {
         System.out.println("Deleting task: " + id);
         taskRepository.deleteTask(id);
     }
-    public List<Task>getTasks() throws SQLException, IOException, ClassNotFoundException {
+
+    public List<Task> getTasks() throws SQLException, IOException, ClassNotFoundException {
         System.out.println("Retrieving tasks");
-        return taskRepository.getTasks();
+        taskRepository.getTasks();
+        return getTasks();
     }
 }

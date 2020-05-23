@@ -48,7 +48,7 @@ public class TaskRepository {
     }
 
     public List<Task> getTasks() throws SQLException, IOException, ClassNotFoundException {
-        String sql = "SELECT id,description,deadline,done FROM task";
+        String sql = "SELECT id,description,deadline,done FROM task WHERE done";
 
         List<Task> tasks = new ArrayList<>();
 
