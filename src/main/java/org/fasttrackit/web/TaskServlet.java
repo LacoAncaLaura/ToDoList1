@@ -27,7 +27,7 @@ public class TaskServlet extends HttpServlet {
     //endPoint
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        addCorsHeaders(resp);
         //se mai numesc POJOs=Plain Old JAVA objects
         CreateTaskRequest request = ObjectMapperConfiguration.OBJECT_MAPPER.readValue(req.getReader(), CreateTaskRequest.class);
         try {
@@ -39,6 +39,7 @@ public class TaskServlet extends HttpServlet {
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        addCorsHeaders(resp);
         String id = req.getParameter("id");
 
         UpdateTaskRequest request = ObjectMapperConfiguration.OBJECT_MAPPER.readValue(req.getReader(), UpdateTaskRequest.class);
@@ -51,7 +52,7 @@ public class TaskServlet extends HttpServlet {
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        addCorsHeaders(resp);
         String id = req.getParameter("id");
 
         try {
@@ -63,7 +64,7 @@ public class TaskServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        addCorsHeaders(resp);
         try {
             List<Task> tasks = taskService.getTasks();
 
@@ -73,5 +74,15 @@ public class TaskServlet extends HttpServlet {
         } catch (SQLException | ClassNotFoundException e) {
             resp.sendError(500, "There was an error while processing your request." + e.getMessage());
         }
+    }
+
+    @Override
+    protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        addCorsHeaders(resp);
+            }
+    private void addCorsHeaders(HttpServletResponse resp){
+        resp.addHeader("Access-Control-Allow-Origin","*");
+        resp.addHeader("Access-Control-Allow-Methods","POST,GET,PUT,DELETE");
+        resp.addHeader("Access-Control-Allow-Headers","content-type");
     }
 }
